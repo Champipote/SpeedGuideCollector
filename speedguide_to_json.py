@@ -38,8 +38,8 @@ for i in range(100):
             description = description.replace("\\\\","doubleslash")
             description = description.replace("\\","")
             description = description.replace("doubleslash","\\\\")
+            description = description.replace("\"","'")
             description = description.replace("'","\\'")
-            description = description.replace("\"","\\\"")
             description = description.replace(">","\>")
             description = description.replace("<br /\>rn","")
             cpt += 1
@@ -59,4 +59,4 @@ for i in range(100):
     else:
         break
 
-print("[\"_default\":{"+fulljson+"}]")
+print("{\"_default\":{\"0\":{\"name\": \"Service name\",\"port\": \"Port Number\",\"protocol\": \"Transport Protocol\",\"description\": \"Description\"},"+fulljson+"}}")
