@@ -14,6 +14,7 @@ import json #to format in JSON
 
 fulljson = ""
 url = "http://speedguide.net/ports_sg.php?sort=port&page="
+cpt = 0
 
 for i in range(100):
     f = urllib.request.urlopen(url+str(i))
@@ -41,7 +42,9 @@ for i in range(100):
             description = description.replace("\"","\\\"")
             description = description.replace(">","\>")
             description = description.replace("<br /\>rn","")
+            cpt += 1
             json2 = (
+                f'\"{cpt}\": '
                 f'{{"name": "{name}",'
                 f'"port": "{port}",'
                 f'"protocol": "{protocol}",'
@@ -56,4 +59,4 @@ for i in range(100):
     else:
         break
 
-print("["+fulljson+"]")
+print("[\"_default\":{"+fulljson+"}]")
